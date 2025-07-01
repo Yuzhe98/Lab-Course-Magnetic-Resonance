@@ -46,4 +46,4 @@ docker-compose.override.yml
 
 # Ignore files for testing
 test.*
-test.py
+src/test.*
