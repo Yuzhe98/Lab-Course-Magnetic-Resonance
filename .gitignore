@@ -44,5 +44,6 @@ docker-compose.override.yml
 # Ignore dotenv or config files (optional)
 .env
 
-# Ignore slides
-notes/
+# Ignore files for testing
+test.*
+test.py
