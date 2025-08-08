@@ -96,18 +96,24 @@ NMR_decayspectrum = (Lorzlin + PSD_noise) * 1e6
 Axion_sensitivity = 1e-12 * 1.0 / np.sqrt(NMR_decayspectrum)
 
 # plot style
-plt.rc("font", size=10)  # font size for all figures
-# plt.rcParams['font.family'] = 'serif'
-# plt.rcParams['font.serif'] = ['Times New Roman']
-plt.rcParams["font.family"] = "Times New Roman"
-# plt.rcParams['mathtext.fontset'] = 'dejavuserif'
-
-# Make math text match Times New Roman
-plt.rcParams["mathtext.fontset"] = "cm"
-plt.rcParams["mathtext.rm"] = "Times New Roman"
-
-# plt.style.use('seaborn-dark')  # to specify different styles
+# plt.style.use("seaborn-v0_8-paper")  # to specify different styles. This could hinder the font size settings. Be careful!
 # print(plt.style.available)  # if you want to know available styles
+
+# font
+# plt.rcParams["font.family"] = "serif"
+plt.rcParams["font.serif"] = ["Times New Roman"]
+plt.rcParams["font.family"] = "Times New Roman"
+plt.rcParams["mathtext.fontset"] = "cm"  # 'dejavuserif'
+
+# font size
+plt.rc("font", size=11)  # Default text
+# plt.rc("axes", titlesize=12)  # Axes title
+# plt.rc("axes", labelsize=12)  # Axes labels
+# plt.rc("xtick", labelsize=12)  # X tick labels
+# plt.rc("ytick", labelsize=12)  # Y tick labels
+# plt.rc("legend", fontsize=12)  # Legend
+# plt.rc("figure", titlesize=12)  # Figure title
+
 
 cm = 1 / 2.56  # convert cm to inch
 # fig = plt.figure(figsize=(8.5 * cm, 12 * cm), dpi=300)  # initialize a figure following APS journal requirements
@@ -321,14 +327,13 @@ for i, ax in enumerate([ax00, ax10]):
     ax.tick_params(axis="x", which="both", pad=3)  # For x-axis ticks
 
 # put figure index
-letters = ["(a)", "(b)", "(c)", "(d)", "(e)", "(f)", "(g)", "(h)", "(i)"]
 for i, ax in enumerate([ax00, ax10]):
     # xleft, xright = ax.get_xlim()
     # ybottom, ytop = ax.get_ylim()
     ax.text(
         -0.013,
         1.02,
-        s=letters[i],
+        s='('+chr(i + ord('a'))+')',
         transform=ax.transAxes,
         ha="right",
         va="bottom",
